@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: actividad3-gutierrez
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+    project: default
+    source:
+        repoURL: https://github.com/CarlosGutierrez1/actividad-3-kube-argo-helm.git
+        targetRevision: main
+        path: helm
+    
+    helm:
+        valueFiles:
+            - values.yaml
+    
+    destination:
+        server: https://kubernetes.default.svc
+        namespace: microservicios
+
+    syncPolicy:
+        automated:
+            prune: true
+            selfHeal: true
+        syncOptions:
+            - CreateNamespace=true
