@@ -1,7 +1,7 @@
 
 image:
   repository: krlitos/actividad3-gutierrez
-  tag: "latest"
+  tag: "7464b0d"
   pullPolicy: IfNotPresent
 
 service:
