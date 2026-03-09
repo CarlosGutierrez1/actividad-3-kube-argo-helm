@@ -1,4 +1,6 @@
 
+replicaCount: 4
+
 image:
   repository: krlitos/actividad3-gutierrez
   tag: "b289743"
