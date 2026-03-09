@@ -17,21 +17,21 @@ resources:
     memory: 512Mi
     cpu: 600m
 
-  livenessProbe:
-    httpGet:
-      path: /actuator/health
-      port: 8080
-    initialDelaySeconds: 30
-    periodSeconds: 15
+livenessProbe:
+  httpGet:
+    path: /actuator/health
+    port: 8080
+  initialDelaySeconds: 30
+  periodSeconds: 15
 
-  readinessProbe:
-    httpGet:
-      path: /actuator/health
-      port: 8080
-    initialDelaySeconds: 20
-    periodSeconds: 10
+readinessProbe:
+  httpGet:
+    path: /actuator/health
+    port: 8080
+  initialDelaySeconds: 20
+  periodSeconds: 10
 
-  redis:
-    image: redis:7-alpine
-    port: 6379
-    storage: 500Mi
+redis:
+  image: redis:7-alpine
+  port: 6379
+  storage: 500Mi
