@@ -55,6 +55,6 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add helm/patrones-diseno/values.yaml
+          git add helm/patrones-api/Values.yaml
           git diff --staged --quiet || git commit -m "auto: update image_tag to ${{ steps.vars.outputs.TAG }}"
           git push origin HEAD:${{ github.head_ref }}
