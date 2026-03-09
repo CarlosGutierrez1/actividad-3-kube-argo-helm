@@ -31,7 +31,7 @@ jobs:
 
       - name: Set image tag
         id: vars
-        run: echo "IMAGE_TAG=${git rev-parse --short HEAD}" >> $GITHUB_OUTPUT
+        run: echo "IMAGE_TAG=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
@@ -48,13 +48,13 @@ jobs:
 
       - name: Update image for ArgoCD
         run: |
-          sed -i "s/  tag: .*/  tag: \"${{ steps.vars.outputs.IMAGE_TAG }}\"/" helm/patrones-diseno/values.yaml
+          sed -i "s/  tag: .*/  tag: \"${{ steps.vars.outputs.IMAGE_TAG }}\"/" helm/patrones-api/Values.yaml
           echo "Nuevo tag_image: ${{ steps.vars.outputs.IMAGE_TAG }}"
 
       - name: Commit and push changes
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add helm/patrones-diseno/values.yaml
+          git add helm/patrones-api/Values.yaml
           git diff --staged --quiet || git commit -m "auto: update image_tag to ${{ steps.vars.outputs.TAG }}"
           git push origin HEAD:${{ github.head_ref }}
