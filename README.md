@@ -2,25 +2,25 @@
 
 Autor: **Carlos Javier Gutierrez Torres**
 
-Este repositorio implementa un workflow de despliegue de un microservicio contenerizardo 'patrones-api'.
+Este repositorio implementa un flujo de trabajo para desplegar un microservicio contenedorizado «patrones-api».
 
-El repositorio contiene el codigo del microservicio, empaquetado con Helm, Orquestacion con ArgoCD y Kubernetes, ademas de automatizacion CI/CD con Github Actions.
+El repositorio contiene el código del microservicio empaquetado con Helm, orquestación con ArgoCD y Kubernetes, así como automatización CI/CD con GitHub Actions.
 
 ## Flujo
 
-Cuando se realzia un cambio desde una rama y se crea un Pull request apuntando hacia la rama main, GitHub Actions construye la imagen docker del microservicio, luego publica esa imagen a Docker Hub 'krlitos/actividad3-gutierrez' y luego realiza la actualizacion del tag de la imagen docker al chart de Helm.
+Cuando se realiza un cambio desde una rama y se crea un Pull request apuntando hacia la rama main, GitHub Actions construye la imagen Docker del microservicio, la publica en Docker Hub (krlitos/actividad3-gutierrez) y actualiza la etiqueta de la imagen Docker en el chart de Helm.
 
-Cuando se hace Merge de la rama, ArgoCD detecta el cambio y despliega la nueva version automaticamente en el cluster.
+Cuando se merge la rama, ArgoCD detecta el cambio y despliega la nueva versión automáticamente en el clúster.
 
 ### Pipeline CI/CD Github Actions
-El pipeline se ejecuta cuando se crea un pull request hacia main.
+El pipeline se ejecuta cuando se crea una Pull Request hacia main.
 
 **Pasos:**
 1. Checkout de la rama del PR
 2. Configurar Java 21
 3. Generar tag a partir del SHA del commit
 4. Login a Docker Hub
-5. Construir y publicar imagen Docker
+5. Construir y publicar la imagen Docker
 6. Actualizar `helm/patrones-api/values.yaml` con el nuevo tag
 7. Commit y push de vuelta a la rama del PR
 
@@ -31,12 +31,12 @@ Al hacer merge el PR a main, ArgoCD detecta el tag actualizado en `values.yaml` 
 
 En K8S se creo:
 1. Un Namespace 'microservicios'
-1. Un Service de tipo load balancer para acceder los pods del microservicio desde afuera del cluster
-2. Un Deployment con la configuracion del Microservicio
+1. Un Service de tipo load balancer para acceder los pods del microservicio desde afuera del clúster.
+2. Un Deployment con la configuración del Microservicio
 3. Un Deployment para redis (El microservicio almacena en redis)
 4. Un Persistent Volume para redis (Evita que se pierda la data de redis en caso de actualizacion)
 5. Un Service de tipo clusterIp para redis
-6. Un Namespace 'argo' donde argo habitara.
+6. Un Namespace 'argo' donde ArgoCD habitara.
 
 ### Visualmente
 
@@ -60,7 +60,7 @@ En K8S se creo:
 
 ```
 .
-├── microservicios/patrones-api/src                                # Codigo fuente Spring Boot
+├── microservicios/patrones-api/src                                # Código fuente Spring Boot
 │   └── main/java/com/actividad3/gutierrez/patronesapi/
 │       ├── config/RedisConfig.java                                # Configuracion de RedisTemplate
 │       ├── controller/                                            # Endpoints REST
