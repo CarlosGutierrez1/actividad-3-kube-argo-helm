@@ -1,6 +1,7 @@
 package com.actividad3.gutierrez.patronesapi.model;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class PatronDiseno {
     @NotBlank(message = "Descripcion es obligatorio")
     private String descripcion;
 
-    @NotBlank(message = "Debe tener al menos una palabra clave")
+    @NotEmpty(message = "Debe tener al menos una palabra clave")
     private List<String> palabrasClave;
 
 
