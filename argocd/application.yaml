@@ -13,7 +13,7 @@ spec:
         path: helm/patrones-api
         helm:
             valueFiles:
-                - values.yaml
+                - Values.yaml
     
     destination:
         server: https://kubernetes.default.svc
