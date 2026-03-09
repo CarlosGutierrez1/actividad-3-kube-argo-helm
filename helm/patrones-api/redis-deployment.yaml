@@ -1,0 +1,38 @@
+apiVersion: v2
+kind: Deployment
+metadata:
+  name: "{{ .Chart.Name }}-redis"
+  labels:
+    app: redis-patrones
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "{{ .Chart.Name }}-redis"
+  template:
+    metadata:
+      labels:
+        app: "{{ .Chart.Name }}-redis"
+    spec:
+      containers:
+        - name: redis
+          image: {{ .Values.redis.image }}
+          ports:
+            - containerPort: {{ .Values.redis.port }}
+          volumeMounts:
+            - name: redis-data
+              mountPath: /data
+          command: ["redis-server", "--appendonly", "yes"]
+
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 60m
+            limits:
+              memory: 512Mi
+              cpu: 600m
+      volumes:
+        - name: redis-data
+          persistentVolumeClaim:
+            claimName: "{{ .Chart.Name }}-redis-data"

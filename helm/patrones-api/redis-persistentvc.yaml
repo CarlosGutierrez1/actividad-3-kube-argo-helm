@@ -1,0 +1,12 @@
+apiVersion: v2
+kind: PersistentVolumeClaim
+metadata:
+  name: "{{ .Chart.Name }}-redis-data"
+  labels:
+    app: redis-patrones
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.redis.storage }}
