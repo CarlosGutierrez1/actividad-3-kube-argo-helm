@@ -39,6 +39,7 @@ En K8S se creo:
 6. Un Namespace 'argo' donde ArgoCD habitara.
 
 ### Visualmente
+<img width="2158" height="910" alt="imagen" src="https://github.com/user-attachments/assets/9aa855f3-e3a9-4188-bd9a-b6846bf5e149" />
 
 
 
