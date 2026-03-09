@@ -47,4 +47,9 @@ public class PatronController {
         return ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/hello")
+    public ResponseEntity<String> hello() {
+        return ResponseEntity.ok("Holaaa!");
+    }
+
 }
