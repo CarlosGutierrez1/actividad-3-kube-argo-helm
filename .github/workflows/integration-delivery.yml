@@ -48,7 +48,7 @@ jobs:
 
       - name: Update image for ArgoCD
         run: |
-          sed -i "s/  tag: .*/  tag: \"${{ steps.vars.outputs.IMAGE_TAG }}\"/" helm/patrones-diseno/values.yaml
+          sed -i "s/  tag: .*/  tag: \"${{ steps.vars.outputs.IMAGE_TAG }}\"/" helm/patrones-api/values.yaml
           echo "Nuevo tag_image: ${{ steps.vars.outputs.IMAGE_TAG }}"
 
       - name: Commit and push changes
