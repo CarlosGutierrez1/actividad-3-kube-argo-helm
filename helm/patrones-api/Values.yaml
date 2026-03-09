@@ -3,7 +3,7 @@ replicaCount: 4
 
 image:
   repository: krlitos/actividad3-gutierrez
-  tag: "2ef0a8c"
+  tag: "2307a65"
   pullPolicy: IfNotPresent
 
 service:
