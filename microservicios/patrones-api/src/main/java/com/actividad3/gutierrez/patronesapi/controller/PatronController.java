@@ -39,7 +39,7 @@ public class PatronController {
         return service.update(id,patronDiseno).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         if (service.delete(id)){
             return ResponseEntity.ok().build();
