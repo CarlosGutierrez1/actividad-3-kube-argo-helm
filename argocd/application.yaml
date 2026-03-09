@@ -10,11 +10,10 @@ spec:
     source:
         repoURL: https://github.com/CarlosGutierrez1/actividad-3-kube-argo-helm.git
         targetRevision: main
-        path: helm
-    
-    helm:
-        valueFiles:
-            - values.yaml
+        path: helm/patrones-api
+        helm:
+            valueFiles:
+                - values.yaml
     
     destination:
         server: https://kubernetes.default.svc
